@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Clone Repo') {
+            steps {
+                echo 'Repository cloned successfully'
+            }
+        }
+
+        stage('Run Script') {
+            steps {
+                bat 'hello.bat'
+            }
+        }
+
+    }
+}
