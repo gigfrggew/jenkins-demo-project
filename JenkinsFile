@@ -5,13 +5,19 @@ pipeline {
 
         stage('Clone Repo') {
             steps {
-                echo 'Repository cloned successfully'
+                echo 'Cloning repository'
             }
         }
 
-        stage('Run Script') {
+        stage('Build Docker Image') {
             steps {
-                bat 'hello.bat'
+                bat 'docker build -t jenkins-demo-image .'
+            }
+        }
+
+        stage('Run Container') {
+            steps {
+                bat 'docker run --name jenkins-demo-container jenkins-demo-image'
             }
         }
 
